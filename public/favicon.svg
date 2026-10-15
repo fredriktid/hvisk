@@ -1,1 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><rect width="32" height="32" fill="#0b1626"/><path d="M20 12l9-3.5M20 12l9 3.5M12 12l-9-3.5M12 12l-9 3.5" stroke="#ffb545" stroke-width="1.6" fill="none"/><rect x="12" y="5" width="8" height="14" fill="#ffb545"/><path d="M8 19h16l-2.5 8h-11z" fill="#f3efe4"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <style>
+    .tower { fill: #4b5a6b; }
+    @media (prefers-color-scheme: light) { .tower { fill: #14202e; } }
+    @media (prefers-color-scheme: dark) { .tower { fill: #f3efe4; } }
+  </style>
+  <path d="M20 12l9-3.5M20 12l9 3.5M12 12l-9-3.5M12 12l-9 3.5" stroke="#ffb545" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+  <rect x="12" y="4" width="8" height="15" fill="#ffb545"/>
+  <path class="tower" d="M8 19h16l-2.5 9h-11z"/>
+</svg>

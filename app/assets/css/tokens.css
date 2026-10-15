@@ -23,7 +23,7 @@
   --link: #1a579c;
   --ok: #0f7a45;
   --bad: #b42318;
-  --out: #8a97a6;
+  --out: #5f6e80;
   --focus: #c92f25;
   --selection: rgb(201 47 37 / 0.22);
   --beam: rgb(255 181 69 / 0.55);
@@ -48,7 +48,7 @@
     --link: #a9cbff;
     --ok: #4ad48a;
     --bad: #ff7b72;
-    --out: #6f7f95;
+    --out: #8694aa;
     --focus: #ffb545;
     --selection: rgb(255 181 69 / 0.3);
     --beam: rgb(255 181 69 / 0.6);
@@ -73,7 +73,7 @@
   --link: #a9cbff;
   --ok: #4ad48a;
   --bad: #ff7b72;
-  --out: #6f7f95;
+  --out: #8694aa;
   --focus: #ffb545;
   --selection: rgb(255 181 69 / 0.3);
   --beam: rgb(255 181 69 / 0.6);
