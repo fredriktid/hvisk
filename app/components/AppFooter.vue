@@ -22,7 +22,7 @@ const { t } = useLocale()
   justify-content: space-between;
   gap: 8px 32px;
   min-height: calc(var(--cell) + 16px);
-  padding: 16px clamp(16px, 5vw, 96px);
+  padding: 16px calc(var(--cell) * 2);
   border-top: 1px solid var(--rule);
   background: var(--ground);
   font-size: 14px;
@@ -33,5 +33,15 @@ const { t } = useLocale()
 }
 .meta {
   font-size: 13px;
+}
+@media (max-width: 960px) {
+  .foot {
+    padding-inline: var(--cell);
+  }
+}
+@media (max-width: 640px) {
+  .foot {
+    padding-inline: 16px;
+  }
 }
 </style>

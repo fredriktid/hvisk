@@ -6,10 +6,19 @@ const props = defineProps<{
   state: 'ready' | 'delivered' | 'gone' | 'error'
   mode: 'live' | 'stored'
   storedId?: string
+  notation?: string
 }>()
 const { t } = useLocale()
 const rows = computed(() => groups(props.ciphertext))
 const stateLabel = computed(() => t(`state.${props.state}` as const))
+const caption = computed(() => {
+  if (props.ciphertext) {
+    if (props.mode === 'live') return t('server.live')
+    return t(props.state === 'ready' ? 'result.stored' : 'result.stored.gone', { id: props.storedId ?? '' })
+  }
+  if (props.mode === 'live') return t('server.empty')
+  return t(props.state === 'gone' ? 'server.empty.gone' : 'server.empty.ready')
+})
 </script>
 
 <template>
@@ -18,7 +27,7 @@ const stateLabel = computed(() => t(`state.${props.state}` as const))
     <div class="cipher mono" :class="{ empty: !ciphertext }" aria-hidden="true">
       <span v-for="(row, i) in rows" :key="i" class="row">{{ row }}</span>
     </div>
-    <p class="live">{{ ciphertext ? (mode === 'live' ? t('server.live') : t('result.stored', { id: storedId ?? '' })) : t('server.empty') }}</p>
+    <p class="live">{{ caption }}</p>
     <ul class="claims">
       <li><SectorLight state="ready" :size="16" /><span>{{ t('server.claim.browser') }}</span></li>
       <li><SectorLight state="delivered" :size="16" /><span>{{ t('server.claim.key') }}</span></li>
@@ -27,7 +36,7 @@ const stateLabel = computed(() => t(`state.${props.state}` as const))
     <div class="status">
       <SectorLight :state="state" />
       <p>
-        <b>{{ stateLabel }}.</b> {{ t('server.sector') }} <span class="mono">Fl 7d</span> {{ t('server.notation').replace(/^Fl 7d /, '') }}
+        <b>{{ stateLabel }}.</b> {{ t('server.sector') }} <span class="mono">{{ notation ?? 'Fl 7d' }}</span> {{ t('server.notation', { notation: '' }).trimStart() }}
         <NuxtLink to="/how">{{ t('server.more') }}</NuxtLink>
       </p>
     </div>

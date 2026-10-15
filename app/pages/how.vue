@@ -14,12 +14,13 @@ useHead({ title: computed(() => `${t('how.title')} · Hvisk`) })
       <p class="lede">{{ t('how.lead') }}</p>
     </header>
     <div class="flow">
-      <svg class="diagram" viewBox="0 0 560 110" aria-hidden="true">
-        <g class="node"><rect x="8" y="40" width="150" height="60" /><text x="83" y="65">{{ locale === 'nb' ? 'Nettleser' : 'Browser' }}</text><text x="83" y="86" class="small">AES-256-GCM</text></g>
+      <svg class="diagram" viewBox="0 0 560 170" aria-hidden="true">
+        <g class="node"><rect x="8" y="40" width="150" height="60" /><text x="83" y="65">{{ locale === 'nb' ? 'Avsender' : 'Sender' }}</text><text x="83" y="86" class="small">AES-256-GCM</text></g>
         <g class="node"><rect x="205" y="40" width="150" height="60" /><text x="280" y="65">Hvisk</text><text x="280" y="86" class="small">ciphertext, iv, salt</text></g>
-        <g class="node"><rect x="402" y="40" width="150" height="60" /><text x="477" y="65">D1</text><text x="477" y="86" class="small">{{ locale === 'nb' ? 'tilfeldige byte' : 'random bytes' }}</text></g>
-        <path class="wire" d="M158 70h47M355 70h47" />
-        <path class="key" d="M83 40V18h170M307 18h170v22" />
+        <g class="node"><rect x="402" y="40" width="150" height="60" /><text x="477" y="65">{{ locale === 'nb' ? 'Mottaker' : 'Receiver' }}</text><text x="477" y="86" class="small">AES-256-GCM</text></g>
+        <g class="node"><rect x="205" y="128" width="150" height="38" /><text x="280" y="152">D1 <tspan class="small">{{ locale === 'nb' ? 'tilfeldige byte' : 'random bytes' }}</tspan></text></g>
+        <path class="wire" d="M158 70h47M355 70h47M280 100v28" />
+        <path class="key" d="M83 40V18h165M312 18h165v22" />
         <text x="280" y="22" class="keylabel">#key</text>
       </svg>
     </div>
@@ -81,6 +82,12 @@ useHead({ title: computed(() => `${t('how.title')} · Hvisk`) })
   font-size: 15px;
   font-weight: 700;
   text-anchor: middle;
+}
+tspan.small {
+  font-weight: 400;
+  font-size: 11px;
+  fill: var(--text-soft);
+  font-family: var(--font-mono);
 }
 .node .small {
   font-family: var(--font-mono);

@@ -25,15 +25,25 @@ useHead({
 }
 .main {
   flex: 1;
-  width: min(100% - 2 * clamp(16px, 5vw, 96px), 1200px);
+  width: min(100% - 2 * var(--cell), 1200px);
   margin-inline: auto;
   padding: var(--cell) 0 calc(var(--cell) * 1.5);
 }
+@media (min-width: 1392px) {
+  .main {
+    margin-inline: calc(var(--cell) * 3) auto;
+  }
+}
 .grid {
   display: grid;
-  grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+  grid-template-columns: minmax(0, 16fr) minmax(0, 8fr);
   gap: var(--cell);
   align-items: start;
+}
+@media (max-width: 640px) {
+  .main {
+    width: calc(100% - 32px);
+  }
 }
 @media (max-width: 960px) {
   .grid {

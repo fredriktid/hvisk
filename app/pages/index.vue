@@ -13,8 +13,9 @@ const preview = ref('')
 const result = ref<{ id: string; key: string; burnToken: string; expiresAt: number; ciphertext: string } | null>(null)
 
 const timeKeys: Record<Lifetime, '1h' | '1d' | '7d' | '30d'> = { 3600: '1h', 86400: '1d', 604800: '7d', 2592000: '30d' }
-const options = computed(() => LIFETIMES.map((value) => ({ value, short: t(`time.${timeKeys[value]}`), long: t(`time.${timeKeys[value]}.long`) })))
+const options = computed(() => LIFETIMES.map((value) => ({ value, short: t(`time.${timeKeys[value]}`), long: t(`time.${timeKeys[value]}.long`), code: t(`time.${timeKeys[value]}.code`) })))
 const chosen = computed(() => options.value.find((o) => o.value === lifetime.value))
+const notation = computed(() => `Fl ${chosen.value?.code ?? '7d'}`)
 const bytes = computed(() => new TextEncoder().encode(text.value).length)
 const tooLong = computed(() => bytes.value > MAX_PLAINTEXT_BYTES)
 
@@ -75,7 +76,7 @@ function reset() {
   <div class="grid">
     <form v-if="!result" class="create" novalidate @submit.prevent="submit">
       <Module :title="t('create.header')">
-        <template #readout>{{ t('create.readout', { lifetime: chosen?.short ?? '' }) }}</template>
+        <template #readout>{{ t('create.readout', { lifetime: chosen?.code ?? '' }) }}</template>
         <div class="field">
           <label for="secret" class="sr-only">{{ t('create.label') }}</label>
           <textarea
@@ -147,7 +148,7 @@ function reset() {
       </Module>
     </div>
 
-    <ServerView :ciphertext="result ? result.ciphertext : preview" :mode="result ? 'stored' : 'live'" :stored-id="result?.id" state="ready" />
+    <ServerView :ciphertext="result ? result.ciphertext : preview" :mode="result ? 'stored' : 'live'" :stored-id="result?.id" :notation="notation" state="ready" />
   </div>
 </template>
 

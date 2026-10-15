@@ -29,7 +29,7 @@ const { theme, toggle } = useTheme()
   justify-content: space-between;
   gap: 24px;
   height: calc(var(--cell) * 2);
-  padding: 0 clamp(16px, 5vw, 96px);
+  padding: 0 calc(var(--cell) * 2);
   border-bottom: 1px solid var(--rule);
   background: var(--ground);
 }
@@ -99,10 +99,16 @@ const { theme, toggle } = useTheme()
   color: var(--text);
   background: var(--panel-2);
 }
+@media (max-width: 960px) {
+  .top {
+    padding: 0 var(--cell);
+  }
+}
 @media (max-width: 640px) {
   .top {
     height: 64px;
     gap: 12px;
+    padding: 0 16px;
   }
   .brand {
     gap: 10px;
