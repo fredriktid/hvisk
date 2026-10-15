@@ -92,13 +92,13 @@ useHead({ title: computed(() => `${t('how.title')} · Hvisk`) })
 }
 tspan.small {
   font-weight: 400;
-  font-size: 11px;
+  font-size: 12px;
   fill: var(--text-soft);
   font-family: var(--font-mono);
 }
 .node .small {
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 400;
   fill: var(--text-soft);
 }

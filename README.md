@@ -78,7 +78,7 @@ Point `hvisk.dev` at the worker in the Cloudflare dashboard (Workers → Setting
 
 ## Design notes
 
-Night is the sea off a Norwegian lighthouse, day is the white tower in daylight. The one action is the lamp. "Fl 7d" in the header is a wink at chart notation for light characteristics: flashes once, then dark. Revealing a secret sweeps a beam across it once. Type is Atkinson Hyperlegible, chosen because receivers read passwords and `0`/`O`, `l`/`1` must not be confused.
+Night is the sea off a Norwegian lighthouse, day is the white tower in daylight. The one action is the lamp. "Fl 7d" in the header is a wink at chart notation for light characteristics: flashes once, then dark. Revealing a secret sweeps a beam across it once. Type is Atkinson Hyperlegible Next and Mono (Braille Institute, SIL Open Font License), chosen because receivers read passwords and `0`/`O`, `l`/`1` must not be confused. The two Latin woff2 files live in `public/fonts`, are preloaded, and have metric-matched local fallbacks so the swap does not reflow.
 
 Language is remembered in `localStorage`, so the server renders English and the page switches to bokmål right after it loads if that is what you picked. A cookie would avoid that short flash, and would also be the first cookie on the site.
 
