@@ -88,7 +88,7 @@ useHead({
 .lead {
   padding: 16px;
   font-size: 17px;
-  max-width: 60ch;
+  max-width: 50ch;
 }
 .lead + .field {
   padding-top: 0;

@@ -37,8 +37,11 @@ export function useLocale() {
 
   const intlLocale = computed(() => (locale.value === 'nb' ? 'nb-NO' : 'en-GB'))
 
-  function formatDateTime(unixSeconds: number): string {
-    return new Intl.DateTimeFormat(intlLocale.value, { dateStyle: 'medium', timeStyle: 'short' }).format(unixSeconds * 1000)
+  function formatDateTime(unixSeconds: number, short = false): string {
+    const options: Intl.DateTimeFormatOptions = short
+      ? { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' }
+      : { dateStyle: 'medium', timeStyle: 'short' }
+    return new Intl.DateTimeFormat(intlLocale.value, options).format(unixSeconds * 1000)
   }
 
   function formatBytes(n: number): string {

@@ -10,7 +10,7 @@ const { t } = useLocale()
       <a :href="CREDIT.source">{{ t('footer.source') }}</a>
     </p>
     <p class="sib">{{ t('footer.sibling').split('Fikser')[0] }}<a :href="CREDIT.sibling.url">Fikser</a>{{ t('footer.sibling').split('Fikser')[1] }}</p>
-    <p class="mono meta">{{ CREDIT.domain }} · {{ t('footer.tracking') }}</p>
+    <p class="meta"><span class="mono">{{ CREDIT.domain }}</span> · {{ t('footer.tracking') }}</p>
   </footer>
 </template>
 

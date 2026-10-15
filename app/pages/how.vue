@@ -44,7 +44,7 @@ useHead({ title: computed(() => `${t('how.title')} · Hvisk`) })
 
 <style scoped>
 .how {
-  max-width: 72ch;
+  max-width: 60ch;
 }
 .title {
   font-size: 32px;
@@ -58,7 +58,7 @@ useHead({ title: computed(() => `${t('how.title')} · Hvisk`) })
   font-size: 19px;
   line-height: 1.55;
   color: var(--text-soft);
-  max-width: 62ch;
+  max-width: 52ch;
 }
 .flow {
   margin: 32px 0 8px;
@@ -68,8 +68,15 @@ useHead({ title: computed(() => `${t('how.title')} · Hvisk`) })
 }
 .diagram {
   width: 100%;
+  max-width: 560px;
   height: auto;
   display: block;
+  margin-inline: auto;
+}
+@media (max-width: 560px) {
+  .flow {
+    display: none;
+  }
 }
 .node rect {
   fill: var(--ground);
@@ -125,7 +132,7 @@ tspan.small {
 }
 .p {
   margin-top: 14px;
-  max-width: 66ch;
+  max-width: 56ch;
 }
 .steps {
   margin-top: 14px;
@@ -140,7 +147,7 @@ tspan.small {
   display: grid;
   grid-template-columns: 32px 1fr;
   gap: 8px;
-  max-width: 66ch;
+  max-width: 56ch;
 }
 .steps li::before {
   content: counter(step);
@@ -176,7 +183,6 @@ tspan.small {
   color: var(--text-soft);
 }
 .table td.mono {
-  font-weight: 700;
   overflow-wrap: anywhere;
 }
 .not {

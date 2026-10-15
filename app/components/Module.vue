@@ -31,7 +31,6 @@ defineProps<{ title: string; level?: 'h1' | 'h2' | 'h3'; sub?: boolean; out?: bo
 }
 .head {
   display: flex;
-  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
   gap: 4px 16px;
@@ -40,6 +39,7 @@ defineProps<{ title: string; level?: 'h1' | 'h2' | 'h3'; sub?: boolean; out?: bo
   min-height: 44px;
 }
 .title {
+  min-width: 0;
   font-size: 13px;
   font-weight: 700;
   letter-spacing: 0.02em;
@@ -58,5 +58,10 @@ defineProps<{ title: string; level?: 'h1' | 'h2' | 'h3'; sub?: boolean; out?: bo
   font-weight: 700;
   color: var(--action);
   white-space: nowrap;
+}
+@media (max-width: 360px) {
+  .head {
+    flex-wrap: wrap;
+  }
 }
 </style>

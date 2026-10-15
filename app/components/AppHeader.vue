@@ -124,4 +124,17 @@ const { theme, toggle } = useTheme()
     padding: 0 6px;
   }
 }
+@media (max-width: 360px) {
+  .top {
+    flex-wrap: wrap;
+    height: auto;
+    min-height: 64px;
+    padding-block: 10px;
+    row-gap: 6px;
+  }
+  .nav {
+    width: 100%;
+    justify-content: flex-end;
+  }
+}
 </style>

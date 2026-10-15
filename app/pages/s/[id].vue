@@ -112,9 +112,9 @@ onBeforeUnmount(() => {
 
       <form v-else-if="phase === 'ready' || phase === 'revealing'" novalidate @submit.prevent="reveal">
         <Module :title="t('open.header')">
-          <template v-if="expiresAt" #readout>{{ t('open.expires', { time: formatDateTime(expiresAt) }) }}</template>
+          <template v-if="expiresAt" #readout>{{ t('open.expires', { time: formatDateTime(expiresAt, true) }) }}</template>
           <p class="lead">{{ t('open.lead') }}</p>
-          <p class="lead warn"><Icon name="alert" />{{ t('open.warn') }}</p>
+          <p class="warn"><Icon name="alert" />{{ t('open.warn') }}</p>
           <div v-if="needsPassphrase" class="field pass">
             <label for="pass" class="plabel">{{ t('open.passphrase') }}</label>
             <input id="pass" v-model="passphrase" class="input" type="password" autocomplete="off" required :aria-describedby="error ? 'pass-error' : 'pass-note'" />
@@ -156,9 +156,10 @@ onBeforeUnmount(() => {
   display: flex;
   gap: 10px;
   align-items: flex-start;
-  font-size: 15px;
+  padding: 0 16px 16px;
+  font-size: 14px;
   color: var(--text-soft);
-  padding-bottom: 16px;
+  max-width: 50ch;
 }
 .warn svg {
   margin-top: 3px;
@@ -171,6 +172,8 @@ onBeforeUnmount(() => {
   display: block;
   font-size: 13px;
   font-weight: 700;
+  letter-spacing: 0.02em;
+  line-height: 1.4;
   color: var(--text-soft);
   margin-bottom: 8px;
 }
@@ -194,6 +197,9 @@ onBeforeUnmount(() => {
   background: var(--ground);
   font-size: 17px;
   line-height: 1.6;
+  max-height: min(70vh, 720px);
+  overflow: auto;
+  overscroll-behavior: contain;
   white-space: pre-wrap;
   overflow-wrap: anywhere;
   animation: lit var(--sweep) var(--sweep-ease) 1 both;

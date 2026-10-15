@@ -5,8 +5,8 @@
   --sweep: 1400ms;
   --sweep-ease: cubic-bezier(0.45, 0, 0.25, 1);
 
-  --font-ui: 'Atkinson Hyperlegible Next Variable', 'Atkinson Hyperlegible Next', system-ui, sans-serif;
-  --font-mono: 'Atkinson Hyperlegible Mono Variable', 'Atkinson Hyperlegible Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  --font-ui: 'Atkinson Hyperlegible Next', 'Atkinson Next Fallback', system-ui, sans-serif;
+  --font-mono: 'Atkinson Hyperlegible Mono', 'Atkinson Mono Fallback', ui-monospace, monospace;
 
   --ground: #eef2f6;
   --panel: #ffffff;

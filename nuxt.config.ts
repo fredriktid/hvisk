@@ -14,8 +14,7 @@ export default defineNuxtConfig({
   modules: ['nitro-cloudflare-dev'],
   devtools: { enabled: false },
   css: [
-    '@fontsource-variable/atkinson-hyperlegible-next',
-    '@fontsource-variable/atkinson-hyperlegible-mono',
+    '~/assets/css/fonts.css',
     '~/assets/css/tokens.css',
     '~/assets/css/base.css',
   ],
@@ -30,7 +29,11 @@ export default defineNuxtConfig({
         { name: 'theme-color', content: '#f4f6f8', media: '(prefers-color-scheme: light)' },
         { name: 'referrer', content: 'no-referrer' },
       ],
-      link: [{ rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' }],
+      link: [
+        { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' },
+        { rel: 'preload', as: 'font', type: 'font/woff2', href: '/fonts/atkinson-hyperlegible-next-latin-wght-normal.woff2', crossorigin: 'anonymous' },
+        { rel: 'preload', as: 'font', type: 'font/woff2', href: '/fonts/atkinson-hyperlegible-mono-latin-wght-normal.woff2', crossorigin: 'anonymous' },
+      ],
       script: [{ src: '/theme.js' }],
     },
   },
@@ -39,6 +42,7 @@ export default defineNuxtConfig({
     '/s/**': { headers: { ...securityHeaders, 'Cache-Control': 'no-store' } },
     '/b/**': { headers: { ...securityHeaders, 'Cache-Control': 'no-store' } },
     '/api/**': { headers: { ...securityHeaders, 'Cache-Control': 'no-store' } },
+    '/fonts/**': { headers: { ...securityHeaders, 'Cache-Control': 'public, max-age=31536000, immutable' } },
   },
   nitro: {
     preset: 'cloudflare_module',

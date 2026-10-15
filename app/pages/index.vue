@@ -123,7 +123,7 @@ function reset() {
         <p class="lead">{{ t('result.lead') }}</p>
         <div class="field">
           <label for="link-field" class="sr-only">{{ t('result.header') }}</label>
-          <textarea id="link-field" class="input mono linkbox" readonly rows="2" :value="link" @focus="($event.target as HTMLTextAreaElement).select()" />
+          <textarea id="link-field" class="input mono linkbox" readonly rows="3" :value="link" @focus="($event.target as HTMLTextAreaElement).select()" />
           <div class="copyrow">
             <CopyButton :text="link" :label="t('result.copy')" :done="t('result.copied')" variant="primary" lamp />
           </div>
@@ -203,7 +203,8 @@ function reset() {
   font-size: 15px;
   line-height: 1.6;
   letter-spacing: 0.02em;
-  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+  word-break: break-all;
   resize: none;
 }
 .copyrow {
