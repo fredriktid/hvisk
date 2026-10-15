@@ -50,4 +50,20 @@ const model = defineModel<number>({ required: true })
   outline-offset: 3px;
   z-index: 1;
 }
+@media (max-width: 480px) {
+  .seg {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+  }
+  .opt {
+    border-right: 0;
+  }
+  .opt:nth-child(odd) {
+    border-right: 1px solid var(--rule-strong);
+  }
+  .opt:nth-child(-n + 2) {
+    border-bottom: 1px solid var(--rule-strong);
+  }
+}
 </style>
