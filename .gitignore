@@ -1,0 +1,19 @@
+node_modules
+.nuxt
+.output
+.wrangler
+.data
+dist
+*.log
+.DS_Store
+.idea
+.vscode
+.env
+.dev.vars
+
+# Design tooling
+PRODUCT.md
+DESIGN.md
+CLAUDE.md
+.claude/
+.impeccable/

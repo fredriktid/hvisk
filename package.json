@@ -1,0 +1,32 @@
+{
+  "name": "hvisk",
+  "private": true,
+  "type": "module",
+  "version": "0.1.0",
+  "packageManager": "pnpm@12.6.0",
+  "scripts": {
+    "dev": "nuxt dev",
+    "build": "nuxt build",
+    "preview": "wrangler dev",
+    "deploy": "pnpm build && wrangler deploy",
+    "db:migrate": "wrangler d1 migrations apply hvisk --local",
+    "db:migrate:remote": "wrangler d1 migrations apply hvisk --remote",
+    "test": "vitest run",
+    "typecheck": "nuxt typecheck",
+    "postinstall": "nuxt prepare"
+  },
+  "dependencies": {
+    "@fontsource-variable/atkinson-hyperlegible-next": "^5.3.0",
+    "@fontsource-variable/atkinson-hyperlegible-mono": "^5.3.0",
+    "nuxt": "^4.6.1",
+    "vue": "^3.5.43"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20251015.0",
+    "nitro-cloudflare-dev": "^0.2.2",
+    "typescript": "^5.9.3",
+    "vitest": "^5.0.5",
+    "vue-tsc": "^3.3.11",
+    "wrangler": "^4.151.0"
+  }
+}

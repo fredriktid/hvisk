@@ -1,0 +1,12 @@
+node_modules
+.nuxt
+.output
+.wrangler
+.data
+.git
+.impeccable
+.claude
+.idea
+PRODUCT.md
+DESIGN.md
+CLAUDE.md
