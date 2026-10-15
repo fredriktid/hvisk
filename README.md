@@ -21,24 +21,15 @@ Try it at [hvisk.dev](https://hvisk.dev). Norwegian for "whisper".
 
 Nuxt 4 on Cloudflare Workers, Cloudflare D1 for storage, Web Crypto in the browser, pnpm. No UI library.
 
-```
-app/            Nuxt app: pages, components, composables, locales (en, nb)
-shared/utils/   crypto.ts (seal/open), encoding.ts, limits.ts; used by both sides
-server/api/     create, peek, open, burn
-server/plugins/ CSP header with script hashes, scheduled cleanup
-migrations/     D1 schema
-docker/         production build running in workerd with a local D1
-```
-
 ## Running it
 
 ```sh
 pnpm install
-pnpm db:migrate      # creates the local D1 under .wrangler/state
+pnpm db:migrate      # creates the local D1
 pnpm dev             # http://localhost:3000 with D1 and rate limit bindings emulated
 ```
 
-The local D1 is keyed by the `database_id` in `wrangler.jsonc`. If that id changes, run `pnpm db:migrate` again.
+The local D1 is tied to the database id in the wrangler config. If that id changes, run `pnpm db:migrate` again.
 
 Tests cover the crypto round trip:
 
@@ -69,7 +60,7 @@ Then open http://localhost:8787. The cron job can be triggered with `curl "http:
 
 ```sh
 pnpm exec wrangler login
-pnpm exec wrangler d1 create hvisk          # paste the id into wrangler.jsonc
+pnpm exec wrangler d1 create hvisk          # paste the id into the wrangler config
 pnpm db:migrate:remote
 pnpm deploy
 ```
@@ -78,7 +69,7 @@ Point `hvisk.dev` at the worker in the Cloudflare dashboard (Workers → Setting
 
 ## Design notes
 
-Night is the sea off a Norwegian lighthouse, day is the white tower in daylight. The one action is the lamp. "Fl 7d" in the header is a wink at chart notation for light characteristics: flashes once, then dark. Revealing a secret sweeps a beam across it once. Type is Atkinson Hyperlegible Next and Mono (Braille Institute, SIL Open Font License), chosen because receivers read passwords and `0`/`O`, `l`/`1` must not be confused. The two Latin woff2 files live in `public/fonts`, are preloaded, and have metric-matched local fallbacks so the swap does not reflow.
+Night is the sea off a Norwegian lighthouse, day is the white tower in daylight. The one action is the lamp. "Fl 7d" in the header is a wink at chart notation for light characteristics: flashes once, then dark. Revealing a secret sweeps a beam across it once. Type is Atkinson Hyperlegible Next and Mono (Braille Institute, SIL Open Font License), chosen because receivers read passwords and `0`/`O`, `l`/`1` must not be confused. The fonts are self-hosted, preloaded, and have metric-matched local fallbacks so the swap does not reflow.
 
 Language is remembered in `localStorage`, so the server renders English and the page switches to bokmål right after it loads if that is what you picked. A cookie would avoid that short flash, and would also be the first cookie on the site.
 
