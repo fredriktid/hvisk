@@ -10,7 +10,7 @@ Try it at [hvisk.dev](https://hvisk.dev). Norwegian for "whisper".
 - The key travels in the URL fragment (after `#`), which browsers never send to a server. Hvisk, its logs and Cloudflare never see it.
 - The server stores ciphertext it cannot read. Someone with full database access sees random bytes.
 - Opening a secret is one atomic `DELETE ... RETURNING`. Two readers racing for the same link cannot both win.
-- Optional passphrase, mixed into the key with PBKDF2 and HKDF, so the link alone is not enough.
+- Optional password, mixed into the key with PBKDF2 and HKDF, so the link alone is not enough.
 - Lifetimes from 1 hour to 30 days, hourly cleanup, a burn link for the sender, per-IP rate limits.
 - No login, no cookies, no tracking, no ads, no third-party requests. Fonts are self-hosted.
 - Strict Content-Security-Policy with hashed inline scripts, no referrer, no framing, no caching on receive pages.

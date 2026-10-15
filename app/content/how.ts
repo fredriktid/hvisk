@@ -12,7 +12,7 @@ const en: HowSection[] = [
   {
     title: 'When you make a link',
     steps: [
-      'Your browser makes a random 256-bit key and a random salt. If you set a passphrase, it is stretched with PBKDF2-SHA256 (600 000 rounds) and mixed into the key with HKDF.',
+      'Your browser makes a random 256-bit key and a random salt. If you set a password, it is stretched with PBKDF2-SHA256 (600 000 rounds) and mixed into the key with HKDF.',
       'The secret is encrypted with AES-256-GCM. GCM adds an authentication tag, so a changed ciphertext or a wrong key is detected instead of shown as garbage.',
       'The browser sends only the ciphertext, the iv and the salt. The server answers with a random id and a burn token.',
       'The link is /s/‹id›#‹key›. Everything after # is the fragment. Browsers never send the fragment in a request, so the key does not reach Hvisk, its logs, or Cloudflare.',
@@ -24,7 +24,7 @@ const en: HowSection[] = [
       'The page first asks the server if the secret is still there. That does not delete anything, so a chat app that previews the link does no harm.',
       'When the receiver presses Reveal and destroy, one database statement deletes the row and returns it. Two people opening the same link at the same moment cannot both get it.',
       'The browser decrypts with the key from the fragment, then removes the key from the address bar so it does not stay in history.',
-      'A passphrase that does not fit can be tried again while the page is open. The server copy is already gone, so a reload shows nothing.',
+      'A password that does not fit can be tried again while the page is open. The server copy is already gone, so a reload shows nothing.',
     ],
   },
   {
@@ -37,14 +37,14 @@ const en: HowSection[] = [
         ['ciphertext', 'AES-256-GCM output. Random bytes without the key'],
         ['iv', 'Random 96-bit nonce for GCM'],
         ['salt', 'Random 128-bit salt for HKDF and PBKDF2'],
-        ['has_passphrase', 'Yes or no, so the receive page can ask for one'],
+        ['has_passphrase', 'Yes or no, so the receive page can ask for it'],
         ['burn_hash', 'SHA-256 of the burn token, so the sender can delete early'],
         ['created_at, expires_at', 'Unix timestamps'],
       ],
     },
     notStored: {
       label: 'Not stored, ever:',
-      items: ['the key', 'the plain text', 'the passphrase', 'your IP address', 'your browser', 'cookies or sessions'],
+      items: ['the key', 'the plain text', 'the password', 'your IP address', 'your browser', 'cookies or sessions'],
     },
   },
   {
@@ -53,13 +53,13 @@ const en: HowSection[] = [
     steps: [
       'They can see how many secrets exist, how large they are, and when they expire. They can delete them.',
       'They cannot read a secret. The ciphertext is AES-256-GCM output under a key they do not have, and guessing a 256-bit key is not a realistic attack.',
-      'They cannot brute-force a passphrase. The passphrase is mixed with the link key, so without the link there is nothing to test a guess against.',
+      'They cannot brute-force a password. The password is mixed with the link key, so without the link there is nothing to test a guess against.',
     ],
   },
   {
     title: 'What Hvisk does not protect against',
     steps: [
-      'Someone who gets the link before the receiver. The link is the key. Send it over a channel you trust, or add a passphrase and send that another way.',
+      'Someone who gets the link before the receiver. The link is the key. Send it over a channel you trust, or add a password and send that another way.',
       'A compromised device or browser on either end. Encryption in the browser is only as good as the browser.',
       'The site itself serving different code. Hvisk is open source, but you still trust hvisk.dev to serve the code it says it does. Read the source or run it yourself if that matters to you.',
     ],
