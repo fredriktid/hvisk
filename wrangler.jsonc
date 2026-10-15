@@ -13,8 +13,7 @@
     {
       "binding": "DB",
       "database_name": "hvisk",
-      // Replace with the id `wrangler d1 create hvisk` prints. Local dev does not need it.
-      "database_id": "00000000-0000-0000-0000-000000000000",
+      "database_id": "91203c66-e921-42db-bea2-0f679d638a63",
       "migrations_dir": "migrations"
     }
   ],
