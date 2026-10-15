@@ -66,7 +66,7 @@ useHead({
   display: flex;
   gap: 10px;
   align-items: flex-start;
-  margin-top: 12px;
+  padding: 0 16px 16px;
   font-size: 15px;
   color: var(--bad);
 }
@@ -86,9 +86,15 @@ useHead({
   border-color: var(--focus);
 }
 .lead {
-  padding: 16px 16px 0;
+  padding: 16px;
   font-size: 17px;
   max-width: 60ch;
+}
+.lead + .field {
+  padding-top: 0;
+}
+.lead + .lead {
+  padding-top: 0;
 }
 .actions {
   display: flex;

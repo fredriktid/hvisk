@@ -38,6 +38,8 @@ pnpm db:migrate      # creates the local D1 under .wrangler/state
 pnpm dev             # http://localhost:3000 with D1 and rate limit bindings emulated
 ```
 
+The local D1 is keyed by the `database_id` in `wrangler.jsonc`. If that id changes, run `pnpm db:migrate` again.
+
 Tests cover the crypto round trip:
 
 ```sh
