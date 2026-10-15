@@ -101,7 +101,7 @@ function reset() {
             </div>
           </Module>
           <Module :title="t('create.passphrase')" level="h3" sub>
-            <template #tag>{{ t('create.optional') }}</template>
+            <template v-if="t('create.optional')" #tag>{{ t('create.optional') }}</template>
             <div class="field">
               <label for="passphrase" class="sr-only">{{ t('create.passphrase') }}</label>
               <input id="passphrase" v-model="passphrase" class="input" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" :placeholder="t('create.passphrase.placeholder')" />

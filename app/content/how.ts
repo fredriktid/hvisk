@@ -81,7 +81,7 @@ const nb: HowSection[] = [
   {
     title: 'Når du lager en lenke',
     steps: [
-      'Nettleseren din lager en tilfeldig 256-bits nøkkel og et tilfeldig salt. Setter du en passfrase, strekkes den med PBKDF2-SHA256 (600 000 runder) og blandes inn i nøkkelen med HKDF.',
+      'Nettleseren din lager en tilfeldig 256-bits nøkkel og et tilfeldig salt. Setter du et passord, strekkes den med PBKDF2-SHA256 (600 000 runder) og blandes inn i nøkkelen med HKDF.',
       'Hemmeligheten krypteres med AES-256-GCM. GCM legger til en autentiseringskode, så en endret chiffertekst eller en feil nøkkel oppdages i stedet for å vises som støy.',
       'Nettleseren sender bare chifferteksten, iv-en og saltet. Serveren svarer med en tilfeldig id og en brennekode.',
       'Lenken er /s/‹id›#‹nøkkel›. Alt etter # er fragmentet. Nettlesere sender aldri fragmentet i en forespørsel, så nøkkelen når ikke Hvisk, loggene eller Cloudflare.',
@@ -93,7 +93,7 @@ const nb: HowSection[] = [
       'Siden spør først serveren om hemmeligheten fortsatt finnes. Det sletter ingenting, så en chat-app som forhåndsviser lenken gjør ingen skade.',
       'Når mottakeren trykker Vis og slett, sletter én databasesetning raden og returnerer den. To som åpner samme lenke i samme øyeblikk kan ikke begge få den.',
       'Nettleseren dekrypterer med nøkkelen fra fragmentet, og fjerner så nøkkelen fra adresselinjen så den ikke blir liggende i historikken.',
-      'En passfrase som ikke passer kan prøves igjen så lenge siden er åpen. Serverkopien er allerede borte, så en oppdatering viser ingenting.',
+      'Et passord som ikke passer kan prøves igjen så lenge siden er åpen. Serverkopien er allerede borte, så en oppdatering viser ingenting.',
     ],
   },
   {
@@ -106,14 +106,14 @@ const nb: HowSection[] = [
         ['ciphertext', 'AES-256-GCM-resultat. Tilfeldige byte uten nøkkelen'],
         ['iv', 'Tilfeldig 96-bits nonce for GCM'],
         ['salt', 'Tilfeldig 128-bits salt for HKDF og PBKDF2'],
-        ['has_passphrase', 'Ja eller nei, så mottakersiden kan spørre etter en'],
+        ['has_passphrase', 'Ja eller nei, så mottakersiden kan spørre etter det'],
         ['burn_hash', 'SHA-256 av brennekoden, så avsenderen kan slette tidlig'],
         ['created_at, expires_at', 'Unix-tidsstempler'],
       ],
     },
     notStored: {
       label: 'Lagres aldri:',
-      items: ['nøkkelen', 'klarteksten', 'passfrasen', 'IP-adressen din', 'nettleseren din', 'informasjonskapsler eller økter'],
+      items: ['nøkkelen', 'klarteksten', 'passordet', 'IP-adressen din', 'nettleseren din', 'informasjonskapsler eller økter'],
     },
   },
   {
@@ -122,13 +122,13 @@ const nb: HowSection[] = [
     steps: [
       'De kan se hvor mange hemmeligheter som finnes, hvor store de er, og når de utløper. De kan slette dem.',
       'De kan ikke lese en hemmelighet. Chifferteksten er AES-256-GCM-resultat under en nøkkel de ikke har, og å gjette en 256-bits nøkkel er ikke et realistisk angrep.',
-      'De kan ikke knekke en passfrase med rå kraft. Passfrasen er blandet med lenkenøkkelen, så uten lenken finnes det ingenting å teste en gjetning mot.',
+      'De kan ikke knekke et passord med rå kraft. Passordet er blandet med lenkenøkkelen, så uten lenken finnes det ingenting å teste en gjetning mot.',
     ],
   },
   {
     title: 'Det Hvisk ikke beskytter mot',
     steps: [
-      'Noen som får tak i lenken før mottakeren. Lenken er nøkkelen. Send den over en kanal du stoler på, eller legg til en passfrase og send den på en annen måte.',
+      'Noen som får tak i lenken før mottakeren. Lenken er nøkkelen. Send den over en kanal du stoler på, eller legg til et passord og send det på en annen måte.',
       'En kompromittert enhet eller nettleser i en av endene. Kryptering i nettleseren er ikke bedre enn nettleseren.',
       'At nettstedet selv serverer annen kode. Hvisk er åpen kildekode, men du stoler fortsatt på at hvisk.dev serverer koden den sier. Les kildekoden eller kjør den selv hvis det betyr noe for deg.',
     ],
