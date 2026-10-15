@@ -36,7 +36,7 @@ const caption = computed(() => {
     <div class="status">
       <SectorLight :state="state" />
       <p>
-        <b>{{ stateLabel }}.</b> {{ t('server.sector') }} <span class="mono">{{ notation ?? 'Fl 7d' }}</span> {{ t('server.notation', { notation: '' }).trimStart() }}
+        <b>{{ stateLabel }}.</b> {{ t('server.sector') }} <span class="mono">{{ notation ?? 'Fl 7d' }}</span> {{ t('server.notation') }}
         <NuxtLink to="/how">{{ t('server.more') }}</NuxtLink>
       </p>
     </div>

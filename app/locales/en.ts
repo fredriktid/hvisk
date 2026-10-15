@@ -50,7 +50,7 @@ export const en = {
   'server.claim.key': 'The key lives in the link, after the #. Browsers never send that part.',
   'server.claim.gone': 'Deleted the moment it is opened. A reload shows nothing.',
   'server.sector': 'The sector light shows the state: lit means ready, green means delivered, grey means out.',
-  'server.notation': '{notation} is chart notation for a light that flashes once, then goes dark.',
+  'server.notation': 'is chart notation for a light that flashes once, then goes dark.',
   'server.more': 'Read more about how it is secured',
 
   'state.ready': 'Ready',

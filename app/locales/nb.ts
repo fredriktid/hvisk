@@ -52,7 +52,7 @@ export const nb: Messages = {
   'server.claim.key': 'Nøkkelen ligger i lenken, etter #. Nettlesere sender aldri den delen.',
   'server.claim.gone': 'Slettes i det øyeblikket den åpnes. En oppdatering viser ingenting.',
   'server.sector': 'Sektorlyset viser status: tent betyr klar, grønt betyr levert, grått betyr slukket.',
-  'server.notation': '{notation} er kartnotasjon for et lys som blinker én gang og deretter slukker.',
+  'server.notation': 'er kartnotasjon for et lys som blinker én gang og deretter slukker.',
   'server.more': 'Les mer om hvordan det er sikret',
 
   'state.ready': 'Klar',
