@@ -184,11 +184,7 @@ onBeforeUnmount(() => {
   background: linear-gradient(100deg, transparent 35%, var(--beam) 50%, transparent 65%);
   transform: translateX(-100%);
   animation: sweep var(--sweep) var(--sweep-ease) 1 forwards;
-  mix-blend-mode: screen;
-}
-:root[data-theme='light'] .beam,
-:root:not([data-theme='dark']) .beam {
-  mix-blend-mode: multiply;
+  mix-blend-mode: var(--beam-blend);
 }
 .secret-text {
   margin: 0;

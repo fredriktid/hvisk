@@ -27,6 +27,7 @@
   --focus: #c92f25;
   --selection: rgb(201 47 37 / 0.22);
   --beam: rgb(255 181 69 / 0.55);
+  --beam-blend: multiply;
   color-scheme: light;
 }
 
@@ -51,6 +52,7 @@
     --focus: #ffb545;
     --selection: rgb(255 181 69 / 0.3);
     --beam: rgb(255 181 69 / 0.6);
+    --beam-blend: screen;
     color-scheme: dark;
   }
 }
@@ -75,5 +77,6 @@
   --focus: #ffb545;
   --selection: rgb(255 181 69 / 0.3);
   --beam: rgb(255 181 69 / 0.6);
+  --beam-blend: screen;
   color-scheme: dark;
 }
