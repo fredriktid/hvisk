@@ -1,0 +1,15 @@
+services:
+  hvisk:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    ports:
+      - "8787:8787"
+    volumes:
+      - hvisk-d1:/data
+    environment:
+      - WRANGLER_SEND_METRICS=false
+      - CI=true
+
+volumes:
+  hvisk-d1:
