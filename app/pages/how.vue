@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { how } from '~/content/how'
-import { CREDIT } from '~/credit'
 
 const { t, locale } = useLocale()
 const sections = computed(() => how[locale.value])
@@ -14,30 +13,28 @@ useHead({ title: computed(() => `${t('how.title')} · Hvisk`) })
       <p class="lede">{{ t('how.lead') }}</p>
     </header>
     <div class="flow">
-      <svg class="diagram" viewBox="0 0 560 170" aria-hidden="true">
-        <g class="node"><rect x="8" y="40" width="150" height="60" /><text x="83" y="65">{{ locale === 'nb' ? 'Avsender' : 'Sender' }}</text><text x="83" y="86" class="small">AES-256-GCM</text></g>
-        <g class="node"><rect x="205" y="40" width="150" height="60" /><text x="280" y="65">Hvisk</text><text x="280" y="86" class="small">ciphertext, iv, salt</text></g>
-        <g class="node"><rect x="402" y="40" width="150" height="60" /><text x="477" y="65">{{ locale === 'nb' ? 'Mottaker' : 'Receiver' }}</text><text x="477" y="86" class="small">AES-256-GCM</text></g>
-        <g class="node"><rect x="205" y="128" width="150" height="38" /><text x="280" y="152">D1 <tspan class="small">{{ locale === 'nb' ? 'tilfeldige byte' : 'random bytes' }}</tspan></text></g>
-        <path class="wire" d="M158 70h47M355 70h47M280 100v28" />
-        <path class="key" d="M83 40V18h165M312 18h165v22" />
-        <text x="280" y="22" class="keylabel">#key</text>
+      <svg class="diagram" viewBox="0 0 620 170" aria-hidden="true">
+        <g class="node"><rect x="8" y="40" width="172" height="60" /><text x="94" y="65">{{ locale === 'nb' ? 'Avsender' : 'Sender' }}</text><text x="94" y="86" class="small">AES-256-GCM</text></g>
+        <g class="node"><rect x="224" y="40" width="172" height="60" /><text x="310" y="65">Hvisk</text><text x="310" y="86" class="small">ciphertext, iv, salt</text></g>
+        <g class="node"><rect x="440" y="40" width="172" height="60" /><text x="526" y="65">{{ locale === 'nb' ? 'Mottaker' : 'Receiver' }}</text><text x="526" y="86" class="small">AES-256-GCM</text></g>
+        <g class="node"><rect x="224" y="128" width="172" height="38" /><text x="310" y="152">D1 <tspan class="small">{{ locale === 'nb' ? 'tilfeldige bytes' : 'random bytes' }}</tspan></text></g>
+        <path class="wire" d="M180 70h44M396 70h44M310 100v28" />
+        <path class="key" d="M94 40V18h184M342 18h184v22" />
+        <text x="310" y="22" class="keylabel">#key</text>
       </svg>
     </div>
     <section v-for="s in sections" :key="s.title" class="sec">
       <h2>{{ s.title }}</h2>
       <p v-if="s.intro" class="p">{{ s.intro }}</p>
-      <ol v-if="s.steps" class="steps">
-        <li v-for="step in s.steps" :key="step">{{ step }}</li>
-      </ol>
       <table v-if="s.table" class="table">
         <thead><tr><th>{{ s.table.head[0] }}</th><th>{{ s.table.head[1] }}</th></tr></thead>
         <tbody><tr v-for="r in s.table.rows" :key="r[0]"><td class="mono">{{ r[0] }}</td><td>{{ r[1] }}</td></tr></tbody>
       </table>
       <p v-if="s.notStored" class="p not"><b>{{ s.notStored.label }}</b> {{ s.notStored.items.join(', ') }}.</p>
-    </section>
-    <section class="sec">
-      <p class="p"><a :href="CREDIT.source">{{ t('footer.source') }}</a></p>
+      <p v-if="s.then" class="p then">{{ s.then }}</p>
+      <ol v-if="s.steps" class="steps">
+        <li v-for="step in s.steps" :key="step">{{ step }}</li>
+      </ol>
     </section>
   </article>
 </template>
@@ -68,7 +65,7 @@ useHead({ title: computed(() => `${t('how.title')} · Hvisk`) })
 }
 .diagram {
   width: 100%;
-  max-width: 560px;
+  max-width: 620px;
   height: auto;
   display: block;
   margin-inline: auto;
@@ -133,6 +130,9 @@ tspan.small {
 .p {
   margin-top: 14px;
   max-width: 56ch;
+}
+.then {
+  margin-top: 24px;
 }
 .steps {
   margin-top: 14px;

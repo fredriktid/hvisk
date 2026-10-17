@@ -37,7 +37,7 @@ const captionParts = computed(() => {
     <div class="cipher mono" :class="{ empty: !ciphertext }" aria-hidden="true">
       <span v-for="(row, i) in rows" :key="i" class="row">{{ row }}</span>
     </div>
-    <p class="live"><template v-for="(part, i) in captionParts" :key="i"><span v-if="part.mono" class="mono">{{ part.text }}</span><template v-else>{{ part.text }}</template></template></p>
+    <p v-if="caption" class="live"><template v-for="(part, i) in captionParts" :key="i"><span v-if="part.mono" class="mono">{{ part.text }}</span><template v-else>{{ part.text }}</template></template></p>
     <ul class="claims">
       <li><SectorLight state="ready" :size="16" /><span>{{ t('server.claim.browser') }}</span></li>
       <li><SectorLight state="delivered" :size="16" /><span>{{ t('server.claim.key') }}</span></li>
@@ -62,7 +62,7 @@ const captionParts = computed(() => {
 .cipher {
   display: grid;
   gap: 2px;
-  padding: 12px 16px 4px;
+  padding: 12px 16px;
   font-size: 15px;
   letter-spacing: 0.08em;
   color: var(--text);
@@ -75,10 +75,10 @@ const captionParts = computed(() => {
   white-space: pre;
 }
 .live {
+  margin-top: -8px;
   padding: 0 16px 12px;
   font-size: 14px;
   color: var(--text-soft);
-  border-bottom: 1px solid var(--rule);
 }
 .claims {
   list-style: none;
@@ -86,6 +86,7 @@ const captionParts = computed(() => {
   display: grid;
   gap: 10px;
   font-size: 15px;
+  border-top: 1px solid var(--rule);
   border-bottom: 1px solid var(--rule);
 }
 .claims li {

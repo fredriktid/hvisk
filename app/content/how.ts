@@ -6,6 +6,7 @@ export interface HowSection {
   steps?: string[]
   table?: { head: [string, string]; rows: [string, string][] }
   notStored?: { label: string; items: string[] }
+  then?: string
 }
 
 const en: HowSection[] = [
@@ -28,7 +29,7 @@ const en: HowSection[] = [
     ],
   },
   {
-    title: 'What the server stores',
+    title: 'What the database holds',
     intro: 'One row per secret, in Cloudflare D1:',
     table: {
       head: ['Column', 'What it is'],
@@ -46,10 +47,7 @@ const en: HowSection[] = [
       label: 'Not stored, ever:',
       items: ['the key', 'the plain text', 'the password', 'your IP address', 'your browser', 'cookies or sessions'],
     },
-  },
-  {
-    title: 'Someone with the database',
-    intro: 'Say the database leaks, or an admin looks:',
+    then: 'Say the database leaks, or someone gets in:',
     steps: [
       'They can see how many secrets exist, how large they are, and when they expire. They can delete them.',
       'They cannot read a secret. The ciphertext is AES-256-GCM output under a key they do not have, and guessing a 256-bit key is not a realistic attack.',
@@ -97,7 +95,7 @@ const nb: HowSection[] = [
     ],
   },
   {
-    title: 'Det serveren lagrer',
+    title: 'Hva som lagres i databasen',
     intro: 'Én rad per hemmelighet, i Cloudflare D1:',
     table: {
       head: ['Kolonne', 'Hva det er'],
@@ -113,12 +111,9 @@ const nb: HowSection[] = [
     },
     notStored: {
       label: 'Lagres aldri:',
-      items: ['nøkkelen', 'klarteksten', 'passordet', 'IP-adressen din', 'nettleseren din', 'informasjonskapsler eller økter'],
+      items: ['nøkkelen', 'klarteksten', 'passordet', 'IP-adressen din', 'nettleseren din', 'cookies eller økter'],
     },
-  },
-  {
-    title: 'Noen med tilgang til databasen',
-    intro: 'Si at databasen lekker, eller at en administrator ser etter:',
+    then: 'Si at databasen lekkes, eller at noen får tilgang:',
     steps: [
       'De kan se hvor mange hemmeligheter som finnes, hvor store de er, og når de utløper. De kan slette dem.',
       'De kan ikke lese en hemmelighet. Chifferteksten er AES-256-GCM-resultat under en nøkkel de ikke har, og å gjette en 256-bits nøkkel er ikke et realistisk angrep.',
@@ -139,7 +134,7 @@ const nb: HowSection[] = [
       'En hemmelighet kan være opptil 32 kB tekst.',
       'Levetid fra 1 time til 30 dager. Utløpte hemmeligheter avvises ved lesing og slettes hver time av en planlagt jobb.',
       'Forespørsler for å lage, sjekke, åpne og brenne er begrenset per IP-adresse.',
-      'Det er ingen sporing og ingen reklame: ingen analyseskript, ingen informasjonskapsler, ingen forespørsler til tredjeparter. Content-Security-Policy forbyr dem, så selv en feil kunne ikke lagt til en.',
+      'Det er ingen sporing og ingen reklame: ingen analyseskript, ingen cookies, ingen forespørsler til tredjeparter. Content-Security-Policy forbyr dem, så selv en feil kunne ikke lagt til en.',
       'Hvert svar har en streng Content-Security-Policy uten innebygde skript og uten tredjepartskilder, ingen referrer, ingen innramming, og mottakersidene mellomlagres aldri.',
       'Det kjører på Cloudflare Workers med D1. Samme bygg kjører lokalt i workerd gjennom wrangler, og i Docker.',
     ],
